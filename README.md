@@ -1,4 +1,4 @@
-This Nix project defines a expression for building custom NixOS installation image for Raspberry Pi.
+This project defines a Nix expression for building a custom Raspberry Pi NixOS installation image.
 
 Features
 --------
