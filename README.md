@@ -1,13 +1,15 @@
 This Nix project defines a expression for building custom NixOS installation image for Raspberry Pi.
 
-Features:
+Features
+--------
 
 - Tested on RaspberryPi 4B.
 - Default Linux tty is set to Raspberry Pi's' serial port.
 - Nix flakes are enabled by default
 - Secrets (wifi networks credentials) are read from a local expression.
 
-Hardware:
+Hardware
+--------
 
 - Host system: any NixOS
 - Target system: RaspberryPi 4B
@@ -18,7 +20,8 @@ Hardware:
 
 ![](./raspi.jpg)
 
-Usage:
+Installation
+------------
 
 1. Better be on a NixOS machine. For Nix-capabale non-NixOS machines, everything should work as
    well, but one might need to figure out how to setup the cross-compilation.
