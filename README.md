@@ -9,11 +9,12 @@ Features:
 
 Hardware:
 
-- RaspberryPi 4B
+- Host system: any NixOS
+- Target system: RaspberryPi 4B
 - Serial-to-USB adaptor. We use
   [Nextion CP2102](https://www.amazon.com/NEXTION-CP2102-Adapter-Display-Beitian/dp/B07R3388DW)
-  in USB-to-TTL mode.
-
+  in USB-to-TTL mode. See also
+  [Raspberry Pi serial port setup answer](https://raspberrypi.stackexchange.com/questions/108769/what-is-the-correct-way-to-connect-serial-console-on-rpi4-model-b)
 
 ![](./raspi.jpg)
 
@@ -51,4 +52,3 @@ References
   Raspberry Pi 3 installation image.
 * [nixos-btrfs-pi](https://github.com/n8henrie/nixos-btrfs-pi) This project seems to build
   the image directly, bypassing the NixOS installer.
-* [Raspberry Pi serial port setup](https://raspberrypi.stackexchange.com/questions/108769/what-is-the-correct-way-to-connect-serial-console-on-rpi4-model-b)
