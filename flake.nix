@@ -4,9 +4,19 @@
       # Author's favorite nixpkgs
       url = "github:grwlf/nixpkgs/local17";
     };
+
+    secrets = {
+      # One can use `secrets.nix.template` as a template.
+      #
+      # $ cp ./secrets.nix.template ./_secrets.nix
+      # $ edit ./_secrets.nix
+      # $ nix registry add nixos-raspi-installer-secrets ./_secrets.nix
+      url = "flake:nixos-raspi-installer-secrets";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs }: let
+  outputs = { self, nixpkgs, secrets }: let
     inherit (nixpkgs.lib) nixosSystem;
     raspi-nixos = self.outputs.nixosConfigurations.raspi;
     system-host = "x86_64-linux";
@@ -49,7 +59,7 @@
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64-installer.nix"
           ./configuration.nix
           {
-            sdImage.compressImage = false;
+            _module.args = { secrets = import secrets.outPath; };
           }
         ];
       };
