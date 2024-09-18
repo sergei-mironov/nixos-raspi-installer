@@ -31,7 +31,7 @@ Installation
    boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
    ```
 3. Prepare the secrets and lock the flakes. Currently we use secrets to pre-configure WiFi-networks:
-   ``` sh
+   ``` shell
    $ cp ./secrets.nix.template ./_secrets.nix
    $ $EDITOR ./_secrets.nix
    $ nix registry add nixos-raspi-installer-secrets ./_secrets.nix
@@ -39,8 +39,8 @@ Installation
    ```
 3. Build the SD-card image by running `nix build '.#sdimage'`
 4. Insert SD-card and write the image to it with
-   ``` sh
-   dd if=./result/sd-image/*.img of=/dev/sdX
+   ``` shell
+   $ dd if=./result/sd-image/*.img of=/dev/sdX
    ```
    Replace `/dev/sdX` with the right SD-card device
 5. Insert the SD-card into a Raspberry Pi.
