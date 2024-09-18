@@ -12,7 +12,7 @@ Hardware
 --------
 
 - Host system: any NixOS
-- Target system: RaspberryPi 4B
+- Target system: RaspberryPi model 4B
 - Serial-to-USB adaptor. We use
   [Nextion CP2102](https://www.amazon.com/NEXTION-CP2102-Adapter-Display-Beitian/dp/B07R3388DW)
   in USB-to-TTL mode. See also
