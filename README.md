@@ -2,10 +2,20 @@ This Nix project defines a expression for building custom NixOS installation ima
 
 Features:
 
-- Default Linux TTY is set to Raspberry Pi's' serial port.
+- Tested on RaspberryPi 4B.
+- Default Linux tty is set to Raspberry Pi's' serial port.
 - Nix flakes are enabled by default
-- Secrets (default wifi networks credentials) are read from `_secrets.nix`.
+- Secrets (wifi networks credentials) are read from a local expression.
 
+Hardware:
+
+- RaspberryPi 4B
+- Serial-to-USB adaptor. We use
+  [Nextion CP2102](https://www.amazon.com/NEXTION-CP2102-Adapter-Display-Beitian/dp/B07R3388DW)
+  in USB-to-TTL mode.
+
+
+![](./raspi.jpg)
 
 Usage:
 
@@ -24,6 +34,21 @@ Usage:
    $ nix flake update
    ```
 3. Build the SD-card image by running `nix build '.#sdimage'`
-4. Insert SD-card and write the image to it with `dd if=./result/ of=/dev/sdX`. Replace `sdX` with
-   the write SD-card device
-5. Insert the SD-card to a Raspberry Pi, boot it and proceed with the regular NixOS installation.
+4. Insert SD-card and write the image to it with
+   ``` sh
+   dd if=./result/sd-image/*.img of=/dev/sdX
+   ```
+   Replace `/dev/sdX` with the right SD-card device
+5. Insert the SD-card into a Raspberry Pi.
+6. Connect your board to a PC using a serial adaptor.
+7. Boot and proceed with the regular NixOS installation.
+
+
+References
+----------
+
+* [nixos-pi](https://github.com/lucernae/nixos-pi/) The main inspiration. Project aimed at building
+  Raspberry Pi 3 installation image.
+* [nixos-btrfs-pi](https://github.com/n8henrie/nixos-btrfs-pi) This project seems to build
+  the image directly, bypassing the NixOS installer.
+* [Raspberry Pi serial port setup](https://raspberrypi.stackexchange.com/questions/108769/what-is-the-correct-way-to-connect-serial-console-on-rpi4-model-b)
